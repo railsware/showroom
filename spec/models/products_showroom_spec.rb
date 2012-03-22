@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe ProductsShowroom do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validates" do
+    it { should validate_presence_of :product_id }
+    it { should validate_presence_of :showroom_id }
+  end
 end
