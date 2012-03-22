@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     s.save!
     pcount = Product.count
     10.times do
-      rand_product = Product.ordered.offset(pcount - 1).first
+      rand_product = Product.ordered.offset(rand(pcount)).first
       ProductsShowroom.create!(product_id: rand_product.id, showroom_id: s.id)
     end if pcount > 0
   end
