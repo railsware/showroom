@@ -7,24 +7,54 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <%=link_to "Shoedazzle", root_path, class: "brand" %>
+        <ul class="nav pull-right">
+          <% if current_user %>
+            <li><%=link_to "Logout", destroy_user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-<header>
-  <% if current_user %>
-    <%=link_to "Logout", destroy_user_session_path %>
-  <% end %>
-</header>
+  
+  
+  <div class="container">
 
-<div>
-  <% if notice %>
-    <%= notice %>
-  <% end %>
-  <% if alert %>
-    <%= alert %>
-  <% end %>
-</div>
-
-  <div>
+    <div class="row">
+      <div class="span12">
+        <% if notice %>
+          <div class="alert alert-success">
+            <a class="close" data-dismiss="alert">×</a>
+            <%= notice %>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-error">
+            <a class="close" data-dismiss="alert">×</a>
+            <%= alert %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
     <%= yield %>
+
+    <hr>
+
+    <footer>
+      <p>© Shoedazzle <%= Time.now.year %></p>
+    </footer>
+
   </div>
 </body>
 </html>

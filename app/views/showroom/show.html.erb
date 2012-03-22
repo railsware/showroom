@@ -1,3 +1,7 @@
+<div class="page-header">
+  <h1><%=@product.name%> | <%=link_to "Back", root_path %></h1>
+</div>
+
 <%= render :partial => "shared/product", :object => @product %>
 
 <%=link_to "Back to showroom", root_path %> 
