@@ -9,7 +9,7 @@ Shoedazzle::Application.routes.draw do
   resources :products
   
   
-  get 'showroom/:id' => 'showroom#show', :as => :showroom_product, :constraints => { :id => /\d/ }
+  get 'showroom/:id' => 'showroom#show', :as => :showroom_product, :constraints => { :id => /\d+/ }
   root :to => "showroom#index"
 
   # The priority is based upon order of creation:

@@ -1,3 +1,7 @@
+# Mission Possible: Do something
+
+# Requirements (without coloscouping)
+
 Also, please keep in mind:
 We've intentionally made requirements fairly vague to give you freedom of interpretation / coming back.
 to us with some follow up questions. You can also look at current Shoedazzle.com web site for some clarifications.
@@ -27,3 +31,28 @@ You can use
 Please do not spend on implementation more than 2-3 days and do not spend your time on nice UI.
 
 We're not looking for particular implementation, so please use your own judgement to build the system. However, all your decisions will be evaluated by reviewers.
+
+# Installation
+
+ * Install rvm [http://beginrescueend.com/](http://beginrescueend.com/), git [http://git-scm.com/](http://git-scm.com/)
+
+    rvm install ruby-1.9.3-p125
+    git clone git://github.com/railsware/shoedazzle.git
+    cd shoedazzle
+    gem install bundler
+    bundle
+    rake db:migrate
+    rake db:seed
+    rails s
+    
+  * Go by url [http://localhost:3000/](http://localhost:3000/)
+  
+# Tests
+
+For starting tests:
+
+    rake
+    
+Tests coverage:
+
+    coverage/index.html

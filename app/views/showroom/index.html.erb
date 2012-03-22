@@ -7,7 +7,7 @@
     <ul class="thumbnails">
       <% @showroom.products.ordered.each do |product| %>
         <li class="span3">
-          <%= link_to showroom_product_path(product), :class => "thumbnail" do %>
+          <%= link_to showroom_product_path(id: product.id), :class => "thumbnail" do %>
             <%=image_tag (product.image? ? product.image.thumb.url : "http://placehold.it/200x200") %>
             <h3><%=product.name%></h3>
           <% end %>
