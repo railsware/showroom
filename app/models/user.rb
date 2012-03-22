@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def populate_showroom
-    self.showrooms.find_current.update_attribute(:current,  false)
+    self.showrooms.find_current.update_attribute(:current,  false) if self.showrooms.count > 0
     s = Showroom.new
     s.user_id = self.id
     s.save!
