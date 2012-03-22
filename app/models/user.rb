@@ -15,10 +15,15 @@ class User < ActiveRecord::Base
   end
   
   before_save :check_and_set_role
+  after_create :create_first_showroom
   
   
   def admin?
     "admin" == self.role
+  end
+  
+  def create_first_showroom
+    
   end
   
   private
