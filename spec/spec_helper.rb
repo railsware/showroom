@@ -7,7 +7,7 @@ Spork.prefork do
   # see also: https://github.com/timcharper/spork/wiki/Spork.trap_method-Jujutsu
   Spork.trap_method(Rails::Application, :reload_routes!)
   Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
-  
+
   # This file is copied to spec/ when you run 'rails generate rspec:install'
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
@@ -35,17 +35,17 @@ Spork.prefork do
     # examples within a transaction, remove the following line or assign false
     # instead of true.
     config.use_transactional_fixtures = true
-    
+
     config.treat_symbols_as_metadata_keys_with_true_values = true
     config.filter_run :focus => true
     config.run_all_when_everything_filtered = true
-    
+
     config.before :suite do
       DatabaseCleaner.strategy = :truncation
     end
-    
+
     config.include Devise::TestHelpers, :type => :controller
-    
+
     config.include ActionView::TestCase::Behavior, example_group: {file_path: %r{spec/presenters} }
   end
   Capybara.app_host = 'http://localhost'
