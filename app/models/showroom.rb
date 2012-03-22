@@ -6,4 +6,6 @@ class Showroom < ActiveRecord::Base
   
   validates :user_id, :presence => true
   
+  scope :outdated, where("current = :current AND created_at < :date", {current: true, date: 1.month.ago.beginning_of_day})
+  
 end

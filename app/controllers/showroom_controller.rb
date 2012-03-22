@@ -11,7 +11,7 @@ class ShowroomController < ApplicationController
   private
 
   def get_current_showroom
-    @showroom = current_user.showrooms.current
+    @showroom = current_user.showrooms.find_current
   end
 
 end

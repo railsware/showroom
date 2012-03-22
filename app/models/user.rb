@@ -9,20 +9,21 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :showrooms, :dependent => :destroy do
-    def current
-      order("showrooms.created_at DESC").first
+    def find_current
+      where(current: true).first
     end
   end
 
   before_save :check_and_set_role
-  after_create :update_showroom
+  after_create :populate_showroom
 
 
   def admin?
     "admin" == self.role
   end
 
-  def update_showroom
+  def populate_showroom
+    self.showrooms.find_current.update_attribute(:current,  false)
     s = Showroom.new
     s.user_id = self.id
     s.save!
