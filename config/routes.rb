@@ -1,5 +1,12 @@
 Shoedazzle::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :path => "/", 
+      :path_names => { 
+      :sign_in => 'signin', 
+      :sign_out => 'logout', 
+      :registration => 'register', 
+      :sign_up => 'signup' }
+  
+  resources :products
   
   root :to => "showroom#index"
 

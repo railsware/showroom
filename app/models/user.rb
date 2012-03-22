@@ -10,12 +10,20 @@ class User < ActiveRecord::Base
   
   has_many :showrooms, :dependent => :destroy do
     def current
-      order("created_at DESC").first
+      order("showrooms.created_at DESC").first
     end
   end
+  
+  before_save :check_and_set_role
   
   
   def admin?
     "admin" == self.role
+  end
+  
+  private
+  
+  def check_and_set_role
+    self.role = "user" if self.role.blank?
   end
 end

@@ -44,6 +44,8 @@ Spork.prefork do
       DatabaseCleaner.strategy = :truncation
     end
     
+    config.include Devise::TestHelpers, :type => :controller
+    
     config.include ActionView::TestCase::Behavior, example_group: {file_path: %r{spec/presenters} }
   end
   Capybara.app_host = 'http://localhost'

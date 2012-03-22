@@ -7,4 +7,24 @@ class ApplicationController < ActionController::Base
   end
   
   
+  private
+  
+  def is_user_admin?
+    unless (current_user && "admin" == current_user.role)
+      redirect_to root_url, :alert => "You dont have access to this page"
+      return false
+    else
+      return true
+    end
+  end
+  
+  def is_regular_user?
+    unless (current_user && "user" == current_user.role)
+      redirect_to products_url
+      return false
+    else
+      return true
+    end
+  end
+  
 end

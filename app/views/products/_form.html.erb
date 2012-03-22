@@ -1,0 +1,20 @@
+<div>
+  <%= form.label :name %><br />
+  <%= form.text_field :name %>
+</div>
+<div>
+  <%= form.label :description %><br />
+  <%= form.text_area :description, :cols => 50, :rows => 10 %>
+</div>
+<div>
+  <%= form.label :price %><br />
+  <%= form.text_field :price %>
+</div>
+<div>
+  <%= image_tag(form.object.image.thumb.url) if !form.object.new_record? && form.object.image? %>
+  <%= form.file_field :image %>
+  <%= form.hidden_field :image_cache %>
+</div>
+<div>
+  <%= form.submit (form.object.new_record? ? "Add" : "Update") %>
+</div>

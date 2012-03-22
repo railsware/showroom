@@ -1,0 +1,13 @@
+<h1>Products</h1>
+
+<%= link_to "Add product", new_product_path %>
+
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <%=link_to product.name, product_path(product) %> | <%=link_to "Edit", edit_product_path(product) %> | <%=link_to "Delete", product_path(product), :confirm => "Are you sure?", :method => :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @products %>
