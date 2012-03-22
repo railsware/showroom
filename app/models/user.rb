@@ -7,4 +7,15 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  has_many :showrooms, :dependent => :destroy do
+    def current
+      order("created_at DESC").first
+    end
+  end
+  
+  
+  def admin?
+    "admin" == self.role
+  end
 end
