@@ -34,7 +34,7 @@ We're not looking for particular implementation, so please use your own judgemen
 
 # Installation
 
- * Install rvm [http://beginrescueend.com/](http://beginrescueend.com/), git [http://git-scm.com/](http://git-scm.com/)
+ * Install rvm ([http://beginrescueend.com/](http://beginrescueend.com/)), git ([http://git-scm.com/](http://git-scm.com/)). Next do this in Terminal:
 
         rvm install ruby-1.9.3-p125
         git clone git://github.com/railsware/shoedazzle.git
@@ -45,11 +45,19 @@ We're not looking for particular implementation, so please use your own judgemen
         rake db:seed
         rails s
     
- * Go by url [http://localhost:3000/](http://localhost:3000/)
+ * Visit url [http://localhost:3000/](http://localhost:3000/) in browser
+ 
+ * To add crontab jobs:
+ 
+         whenever --update-crontab
+         
+ * Task for updating showrooms, which have created at 1 month ago:
+ 
+         rake showroom:update
   
 # Tests
 
-For starting tests:
+Start testing:
 
     rake
     
