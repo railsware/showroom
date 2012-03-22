@@ -36,16 +36,16 @@ We're not looking for particular implementation, so please use your own judgemen
 
  * Install rvm [http://beginrescueend.com/](http://beginrescueend.com/), git [http://git-scm.com/](http://git-scm.com/)
 
-    rvm install ruby-1.9.3-p125
-    git clone git://github.com/railsware/shoedazzle.git
-    cd shoedazzle
-    gem install bundler
-    bundle
-    rake db:migrate
-    rake db:seed
-    rails s
+        rvm install ruby-1.9.3-p125
+        git clone git://github.com/railsware/shoedazzle.git
+        cd shoedazzle
+        gem install bundler
+        bundle
+        rake db:migrate
+        rake db:seed
+        rails s
     
-  * Go by url [http://localhost:3000/](http://localhost:3000/)
+ * Go by url [http://localhost:3000/](http://localhost:3000/)
   
 # Tests
 
