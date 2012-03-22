@@ -2,12 +2,25 @@
 
 <%= link_to "Add product", new_product_path %>
 
-<ul>
-  <% @products.each do |product| %>
-    <li>
-      <%=link_to product.name, product_path(product) %> | <%=link_to "Edit", edit_product_path(product) %> | <%=link_to "Delete", product_path(product), :confirm => "Are you sure?", :method => :delete %>
-    </li>
-  <% end %>
-</ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%=link_to product.name, product_path(product) %></td>
+        <td><%=link_to "Edit", edit_product_path(product) %></td>
+        <td><%=link_to "Delete", product_path(product), :confirm => "Are you sure?", :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= paginate @products %>

@@ -1,7 +1,11 @@
-<h1>New product</h1>
-
-<%= form_for @product, :html => {:multipart => true} do |f| %>
-  <%= render :partial => "form", :object => f %>
-<% end %>
+<div class="row">
+  <div class="span6">
+    <h2>New product</h2>
+    <%= form_for @product, :html => {:multipart => true, :class => "well"} do |f| %>
+      <%= render :partial => "form", :object => f %>
+    <% end %>
+    
+  </div>
+</div>
 
 <%=link_to "Back", products_path %>

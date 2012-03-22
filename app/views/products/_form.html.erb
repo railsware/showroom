@@ -1,20 +1,29 @@
-<div>
-  <%= form.label :name %><br />
-  <%= form.text_field :name %>
+<div class="control-group">
+  <%= form.label :name, :class => "control-label" %>
+  <div class="controls">
+    <%= form.text_field :name, :class => "input-xlarge" %>
+  </div>
 </div>
-<div>
-  <%= form.label :description %><br />
-  <%= form.text_area :description, :cols => 50, :rows => 10 %>
+<div class="control-group">
+  <%= form.label :description, :class => "control-label" %>
+  <div class="controls">
+    <%= form.text_area :description, :cols => 50, :rows => 10 %>
+  </div>
 </div>
-<div>
-  <%= form.label :price %><br />
-  <%= form.text_field :price %>
+<div class="control-group">
+  <%= form.label :price, :class => "control-label" %>
+  <div class="controls">
+    <%= form.text_field :price, :class => "input-xlarge" %>
+  </div>
 </div>
-<div>
-  <%= image_tag(form.object.image.thumb.url) if !form.object.new_record? && form.object.image? %>
-  <%= form.file_field :image %>
-  <%= form.hidden_field :image_cache %>
+<div class="control-group">
+  <%= form.label :price, :class => "control-label" %>
+  <div class="controls">
+    <%= image_tag(form.object.image.thumb.url) if !form.object.new_record? && form.object.image? %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
 </div>
-<div>
-  <%= form.submit (form.object.new_record? ? "Add" : "Update") %>
+<div class="control-group">
+  <%= form.submit (form.object.new_record? ? "Add" : "Update"), :class => "btn btn-primary" %>
 </div>
