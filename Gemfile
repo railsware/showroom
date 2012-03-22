@@ -27,6 +27,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '2.8.1'
+  gem 'simplecov', '0.6.1', :require => false
 end
 
 group :development do
@@ -49,7 +50,7 @@ end
 
 # notify
 group :linux_development do
-  gem "rb-inotify" 
+  gem "rb-inotify"
   gem "libnotify"
 end
 group :mac_development do
