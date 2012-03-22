@@ -1,5 +1,7 @@
 require 'rubygems'
 require 'spork'
+require 'simplecov'
+SimpleCov.start
 
 Spork.prefork do
   require "rails/application"
