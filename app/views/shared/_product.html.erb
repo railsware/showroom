@@ -1,8 +1,10 @@
-<div class="row">
-  <div class="span6">
-    <h2><%= product.name %></h2>
-    <p><strong>Price:</strong> <%= number_to_currency product.price %></p>
-    <p><%= product.description %></p>
-    <%=image_tag (product.image? ? product.image.thumb.url : "http://placehold.it/200x200") %>
+<% present product do |product_presenter| %>
+  <div class="row">
+    <div class="span6">
+      <h2><%= product_presenter.name %></h2>
+      <p><strong>Price:</strong> <%= product_presenter.currency_price %></p>
+      <p><%= product_presenter.description %></p>
+      <%= product_presenter.thumbnail_with_link %>
+    </div>
   </div>
-</div>
+<% end %>

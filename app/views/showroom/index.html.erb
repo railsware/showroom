@@ -8,8 +8,10 @@
       <% @showroom.products.ordered.each do |product| %>
         <li class="span3">
           <%= link_to showroom_product_path(id: product.id), :class => "thumbnail" do %>
-            <%=image_tag (product.image? ? product.image.thumb.url : "http://placehold.it/200x200") %>
-            <h3><%=product.name%></h3>
+            <% present product do |product_presenter| %>
+              <%= product_presenter.thumbnail %>
+              <h3><%=product_presenter.name%></h3>
+            <% end %>
           <% end %>
         </li>
       <% end if @showroom.products.count > 0 %>
