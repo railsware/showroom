@@ -7,6 +7,7 @@ describe ShowroomController do
     10.times do
       @showroom.products << Factory(:product)
     end
+    @showroom.user.showrooms.update_all({current: false}, ["showrooms.id != ?", [@showroom.id]])
   end
 
   it "#show should not be successfull" do
