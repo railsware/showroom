@@ -1,0 +1,16 @@
+<h1><%=product.name%></h1>
+
+<h3>Description</h3>
+<p>
+  <%= product.description %>
+</p>
+<h3>Price</h3>
+<p>
+  <%= number_to_currency(product.price) %>
+</p>
+<% if product.image? %>
+<h3>Image</h3>
+<p>
+  <%= image_tag(product.image.thumb.url) %>
+</p>
+<% end %>

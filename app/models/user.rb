@@ -15,15 +15,22 @@ class User < ActiveRecord::Base
   end
   
   before_save :check_and_set_role
-  after_create :create_first_showroom
+  after_create :update_showroom
   
   
   def admin?
     "admin" == self.role
   end
   
-  def create_first_showroom
-    
+  def update_showroom
+    s = Showroom.new
+    s.user_id = self.id
+    s.save!
+    pcount = Product.count
+    10.times do
+      rand_product = Product.ordered.offset(pcount - 1).first
+      ProductsShowroom.create!(product_id: rand_product.id, showroom_id: s.id)
+    end if pcount > 0
   end
   
   private

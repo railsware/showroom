@@ -1,1 +1,14 @@
-<h1>Showrooms</h1>
+<h1>Showroom</h1>
+
+<ul>
+<% @showroom.products.each do |product| %>
+  <li>
+    <%= link_to showroom_product_path(product) do %>
+      <% if product.image? %>
+        <div><%=image_tag product.image.thumb.url %></div>
+      <% end %>
+      <div><%= product.name %></div>
+    <% end %>
+  </li>
+<% end if @showroom.products.count > 0 %>
+</ul>
