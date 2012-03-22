@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   sequence :name do |n|
-    "Product#{n}"
+    "Product#{n}#{rand(100)}"
   end
 
   factory :product do

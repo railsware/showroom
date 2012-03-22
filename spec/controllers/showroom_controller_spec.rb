@@ -14,11 +14,23 @@ describe ShowroomController do
     get :show, :id => @showroom.products.first.to_param
     response.should redirect_to(new_user_session_path)
   end
-
-  it "#show should be successfull" do
-    sign_in(@showroom.user)
-    get :show, :id => @showroom.products.first.to_param
-    response.should be_success
+  
+  context "#show" do
+  
+    it "should be successfull" do
+      sign_in(@showroom.user)
+      get :show, :id => @showroom.products.first.to_param
+      response.should be_success
+    end
+    
+    it "should not be successfull for invalid product" do
+      sign_in(@showroom.user)
+      product = Factory(:product)
+      lambda {
+        get :show, :id => product.to_param
+      }.should raise_error(ActiveRecord::RecordNotFound)
+    end
+  
   end
 
 end
