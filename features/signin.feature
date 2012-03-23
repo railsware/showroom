@@ -1,4 +1,4 @@
-Feature: Authentication
+Feature: Sign in
   In order to access showroom
   I want to be able to authenticate
 

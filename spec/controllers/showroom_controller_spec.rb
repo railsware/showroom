@@ -35,7 +35,7 @@ describe ShowroomController do
       response.should redirect_to(new_user_session_path)
     end
 
-    it "should not be successfull for not signed in user" do
+    it "should not be successfull for signed in admin" do
       sign_in(Factory(:admin))
       get :show, :id => @showroom.products.first.to_param
       response.should redirect_to(products_path)

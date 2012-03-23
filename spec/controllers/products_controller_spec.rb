@@ -42,6 +42,12 @@ describe ProductsController do
       get :show, :id => @product.id
       response.should be_success
     end
+
+    it "should show access denied message for signed in user" do
+      sign_in(Factory(:user))
+      get :show, :id => @product.id
+      flash[:alert].should include("You dont have access to this page")
+    end
   end
 
   context "#new" do

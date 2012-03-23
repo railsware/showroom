@@ -13,6 +13,9 @@ def path_to(page_name)
   when /the new product page/
     new_product_path
 
+  when /the showroom page/
+    showroom_path
+
   # Add more page name => path mappings here
 
   else

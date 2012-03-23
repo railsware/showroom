@@ -25,6 +25,15 @@ When /^(?:|I )have the product:$/ do |fields|
   product.save!
 end
 
+When /^(?:|I )I visit the showroom's product "([^"]*)"$/ do |name|
+  product = Product.find_by_name(name)
+  ps = ProductsShowroom.new
+  ps.product = product
+  ps.showroom = User.first.showrooms.find_current
+  ps.save!
+  visit showroom_product_path(product)
+end
+
 When /^(?:|I )visit the product "([^"]*)" edit page$/ do |name|
   product = Product.find_by_name(name)
   visit edit_product_path(product)
