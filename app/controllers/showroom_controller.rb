@@ -2,9 +2,8 @@ class ShowroomController < ApplicationController
   before_filter :is_regular_user?
   before_filter :get_current_showroom
 
-
   def show
-    @product = @showroom.products.find params[:id]
+    @product = @showroom.products.find_by_id params[:id]
     return (redirect_to root_path) unless @product
   end
 

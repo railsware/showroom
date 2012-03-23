@@ -1,6 +1,6 @@
 <h1>Update product</h1>
 
-<%= form_for @product, :html => {:multipart => true} do |f| %>
+<%= form_for @product, :html => {:multipart => true, :class => "well"} do |f| %>
   <%= render :partial => "form", :object => f %>
 <% end %>
 

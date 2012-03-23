@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  ROLES = %w[admin user]
+  ROLES = %w[user admin]
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
       where(current: true).first
     end
   end
+  
+  scope :ordered, order("users.created_at DESC")
 
   before_save :check_and_set_role
   after_create :populate_showroom
@@ -23,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def populate_showroom
-    self.showrooms.find_current.update_attribute(:current,  false) if self.showrooms.count > 0
+    self.showrooms.find_current.update_attribute(:current,  false) if self.showrooms.count > 0 && self.showrooms.find_current
     s = Showroom.new
     s.user_id = self.id
     s.save!

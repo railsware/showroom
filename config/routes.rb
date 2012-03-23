@@ -7,7 +7,7 @@ Shoedazzle::Application.routes.draw do
       :sign_up => 'signup' }
   
   resources :products
-  
+  resources :users
   
   get 'showroom/:id' => 'showroom#show', :as => :showroom_product, :constraints => { :id => /\d+/ }
   root :to => "showroom#index"

@@ -26,9 +26,8 @@ describe ShowroomController do
     it "should not be successfull for invalid product" do
       sign_in(@showroom.user)
       product = Factory(:product)
-      lambda {
-        get :show, :id => product.to_param
-      }.should raise_error(ActiveRecord::RecordNotFound)
+      get :show, :id => product.to_param
+      response.should redirect_to(root_path)
     end
 
     it "should not be successfull for not signed in user" do

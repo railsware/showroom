@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="span6">
+    <h2>New user</h2>
+    <%= form_for @user, :html => {:class => "well"} do |f| %>
+      <%= render :partial => "form", :object => f %>
+    <% end %>
+    
+  </div>
+</div>
+
+<%=link_to "Back", users_path %>
