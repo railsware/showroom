@@ -14,15 +14,15 @@ describe ShowroomController do
     get :show, :id => @showroom.products.first.to_param
     response.should redirect_to(new_user_session_path)
   end
-  
+
   context "#show" do
-  
+
     it "should be successfull" do
       sign_in(@showroom.user)
       get :show, :id => @showroom.products.first.to_param
       response.should be_success
     end
-    
+
     it "should not be successfull for invalid product" do
       sign_in(@showroom.user)
       product = Factory(:product)
@@ -30,7 +30,18 @@ describe ShowroomController do
         get :show, :id => product.to_param
       }.should raise_error(ActiveRecord::RecordNotFound)
     end
-  
+
+    it "should not be successfull for not signed in user" do
+      get :show, :id => @showroom.products.first.to_param
+      response.should redirect_to(new_user_session_path)
+    end
+
+    it "should not be successfull for not signed in user" do
+      sign_in(Factory(:admin))
+      get :show, :id => @showroom.products.first.to_param
+      response.should redirect_to(products_path)
+    end
+
   end
 
 end

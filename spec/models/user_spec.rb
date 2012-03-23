@@ -1,17 +1,33 @@
 require 'spec_helper'
 
 describe User do
-  subject do
+
+  before(:all) do
     10.times { Factory(:product) }
-    Factory(:user)
   end
 
-  it "showroom should be nil" do
-    subject.showrooms.first.should_not be_nil
+  context " as user role" do
+    subject do
+      Factory(:user)
+    end
+
+    it "showroom should be nil" do
+      subject.showrooms.first.should_not be_nil
+    end
+
+    it "showroom.products.count should == 10" do
+      subject.showrooms.first.products.count.should == 10
+    end
   end
 
-  it "showroom.products.count should == 10" do
-    subject.showrooms.first.products.count.should == 10
+  context " as admin role" do
+    subject do
+      Factory(:admin)
+    end
+
+    it "should check for admin role" do
+      subject.admin?.should be_true
+    end
   end
   
   describe "abilities" do
