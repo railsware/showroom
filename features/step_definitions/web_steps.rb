@@ -2,11 +2,6 @@ When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
-When /^(?:|I )select image "([^"]*)"$/ do |image|
-  @product = Factory(:product, :image => File.open(File.join(Rails.root, "spec", "factories", "files", image)))
-  fill_in(field, :with => value)
-end
-
 When /^the following (user|admin) exists:$/ do |role, fields|
   fields.rows_hash.each do |email, password|
     Factory.create(role, :email => email.dup, :password => password.dup, :password_confirmation => password.dup)
@@ -55,11 +50,7 @@ When /^(?:|I )sign in as "([^"]*)" with password "([^"]*)"$/ do |email, password
 end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
-  if page.respond_to? :should
-    page.should have_content(text)
-  else
-    assert page.has_content?(text)
-  end
+  page.should have_content(text)
 end
 
 When /^(?:|I )go to (.+)$/ do |page_name|
