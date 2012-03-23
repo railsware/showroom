@@ -1,0 +1,26 @@
+<h1>Users</h1>
+
+<%= link_to "Add user", new_user_path %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%=link_to user.email, user_path(user) %></td>
+        <td><%=link_to "Edit", edit_user_path(user) %></td>
+        <td><%=link_to "Delete", user_path(user), :confirm => "Are you sure?", :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users %>

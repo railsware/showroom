@@ -17,6 +17,12 @@
           <span class="icon-bar"></span>
         </a>
         <%=link_to "Shoedazzle", root_path, class: "brand" %>
+        <ul class="nav">
+          <% if current_user && current_user.admin? %>
+            <%=menu_tab "Products", products_path %>
+            <%=menu_tab "Users", users_path %>
+          <% end %>
+        </ul>
         <ul class="nav pull-right">
           <% if current_user %>
             <li><%=link_to "Logout", destroy_user_session_path %></li>

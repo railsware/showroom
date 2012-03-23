@@ -1,0 +1,7 @@
+<h1>Update user</h1>
+
+<%= form_for @user, :html => {:multipart => true, :class => "well"} do |f| %>
+  <%= render :partial => "form", :object => f %>
+<% end %>
+
+<%=link_to "Back", users_path %>
