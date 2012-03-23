@@ -17,5 +17,5 @@ public/uploads/*
 
 # mac
 .DS_Storetest
-*.swp
+*.sw*
 coverage

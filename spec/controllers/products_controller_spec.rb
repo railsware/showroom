@@ -81,7 +81,7 @@ describe ProductsController do
         post :create, :product => Factory.attributes_for(:product)
       }.should change(Product, :count).by(1)
     end
-    
+
     it "should not be successfull for admin and empty product name" do
       sign_in(Factory(:admin))
       lambda {
@@ -118,9 +118,9 @@ describe ProductsController do
       put :update, :product => @new_product_attributes, :id => @product.to_param
       assigns[:product].reload.name.should == "Updated Product"
       assigns[:product].price.should == 45.79
-      response.should redirect_to(edit_product_path(:id => @product.to_param))
+      response.should redirect_to(product_path(:id => @product.to_param))
     end
-    
+
     it "should not be successfull for admin and empty name or price" do
       sign_in(Factory(:admin))
       put :update, :product => @new_product_attributes.merge(name: ""), :id => @product.to_param
@@ -131,20 +131,20 @@ describe ProductsController do
       response.should render_template('edit')
     end
   end
-  
+
   context "#destroy" do
 
     before(:each) do
       @product = Factory(:product)
     end
-    
+
     it "should not be successfull for not signed in visitor" do
       lambda {
         delete :destroy, :id => @product.to_param
       }.should change(Product, :count).by(0)
       response.should redirect_to(new_user_session_path)
     end
-    
+
     it "should not be successfull for signed in user" do
       sign_in(Factory(:user))
       lambda {
@@ -152,7 +152,7 @@ describe ProductsController do
       }.should change(Product, :count).by(0)
       response.should redirect_to(root_path)
     end
-    
+
     it "should be successfull by admin" do
       sign_in(Factory(:admin))
       lambda {

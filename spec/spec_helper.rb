@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'spork'
-
 require 'simplecov'
 SimpleCov.start
 

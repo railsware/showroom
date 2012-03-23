@@ -1,5 +1,7 @@
 require 'rubygems'
 require 'spork'
+require 'simplecov'
+SimpleCov.start
 
 Spork.prefork do
   require "rails/application"
@@ -7,13 +9,12 @@ Spork.prefork do
   # see also: https://github.com/timcharper/spork/wiki/Spork.trap_method-Jujutsu
   Spork.trap_method(Rails::Application, :reload_routes!)
   Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
-  
-  
+
   require 'cucumber/rails'
-  
+
   Capybara.default_selector = :css
   Capybara.app_host = "http://localhost"
-  ActionController::Base.allow_rescue = false  
+  ActionController::Base.allow_rescue = false
 end
 
 Spork.each_run do
@@ -26,3 +27,4 @@ Spork.each_run do
     raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
   end
 end
+
