@@ -36,31 +36,40 @@ We're not looking for particular implementation, so please use your own judgemen
 
  * Install rvm ([http://beginrescueend.com/](http://beginrescueend.com/)), git ([http://git-scm.com/](http://git-scm.com/)). Next do this in Terminal:
 
-        rvm install ruby-1.9.3-p125
-        git clone git://github.com/railsware/shoedazzle.git
-        cd shoedazzle
-        gem install bundler
-        bundle
-        rake db:migrate
-        rake db:seed
-        rails s
-    
+        $ rvm install ruby-1.9.3-p125
+        $ git clone git://github.com/railsware/shoedazzle.git
+        $ cd shoedazzle
+        $ gem install bundler
+        Make sure you have ImageMagick installed. If not please run the following command to install it:
+          * for ports
+            $ port install imagemagick
+          * for HomeBrew
+            $ brew install imagemagick
+        $ bundle
+        $ rake db:migrate
+        $ rake db:seed
+        $ rails s
+
  * Visit url [http://localhost:3000/](http://localhost:3000/) in browser
- 
+
+ * To get access to admin area you should sign in with the following credentials:
+        Login: admin1@test.com
+        Password: secure
+
  * To add crontab jobs:
- 
-         whenever --update-crontab
-         
+
+        $ whenever --update-crontab
+
  * Task for updating showrooms, which have created at 1 month ago:
- 
-         rake showroom:update
-  
+
+        $ rake showroom:update
+
 # Tests
 
 Start testing:
 
-    rake
-    
+    $ rake
+
 Tests coverage:
 
-    coverage/index.html
+    $ open coverage/index.html
